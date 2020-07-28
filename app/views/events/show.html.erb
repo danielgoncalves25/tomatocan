@@ -53,7 +53,6 @@
             </div>
           </div>
 
-          <! Quick Summary Box -->
           <div class="col-md-4">
             <% if @event.desc.present? %>
                <b> <%= @event.desc.gsub(/\n/, '<br>').html_safe %> </b> <br>
@@ -86,8 +85,7 @@
     <div class="row" style="padding: 10px 0px !important;">
       <! Left Column -->
       <div class="col-md-8">
-      <div style="margin-left: -15px;"> To Join the CONVERSATION: </div>
-
+        <div style="margin-left: -15px;"> To Join the CONVERSATION: </div>
         <! Left Column -->
         <div class="col-md-12">
           <div> <strong>Desktop:</strong> </div>
@@ -99,22 +97,33 @@
           <div> Download the JITSI meet app and join the CONVERSATION chatroom</div>
         </div>
       </div>
-
-         <! Right Column -->
-          <div class="col-md-4">
-            <div> Invite your fellow activists </div>
-            <div class="row">
-              
+       <! Right Column -->
+        <div class="col-md-4">
+          <div style="text-align: center;"> 
+          <strong> Invite your fellow activists </strong>
+          </div>
+          <div class="row" style="display: flex; align-content: center; justify-content: center;">
+            <div class="col-md-2">
+              <%= link_to root_path do %>
+                <%= image_tag "black_email_squared_icon.png", height: "25", width: "25"%>
+              <% end %>
+            </div>
+            <div class="col-md-2">
+             <%= link_to root_path do %>
+                <%= image_tag "black_linkedin_squared_icon.png", height: "25", width: "25"%>
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to root_path do %>
+                <%= image_tag "black_twitter_squared_icon.png", height: "25", width: "25"%>
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <%= image_tag("black_facebook_squared_icon.png", height: "25", width: "25") %>
             </div>
           </div>
-
-
-
-
-
-
-
-
-
+        </div>
+      </div>
+    </div>
   </div>
 </div>
