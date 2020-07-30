@@ -19,7 +19,7 @@
     <div class="row">
       <!-- CONVERSATION NAME & HOST -->
       <div class="col-lg-12" style="text-align: center;">
-        <h1 style="margin-top: 30px;" > Come Join the CONVERSATION </h1>
+        <h1> Come Join the CONVERSATION </h1>
           <h3>
             <strong>
               <%= @event.name %>
@@ -37,7 +37,7 @@
     <div class="row" style="background-color: #8C1D40;"> 
       <!-- PROFILE IMAGE -->
       <% if @user.profilepic.present? && @user.profilepic != '' %>
-        <div class="col-md-4" style="justify-content: center;">
+        <div class="col-md-4" style="display: flex; align-content: center; justify-content: center;">
           <%= image_tag @user.profilepic.url.to_s, height: "225", width: "225"%>
         </div>
       <% end %>
@@ -82,7 +82,7 @@
 
 
     <!-- BOTTOM HALF -->
-    <div class="row" style="padding: 10px 0px !important;">
+    <div class="row" style="padding: 20px 0px !important;">
       <! Left Column -->
       <div class="col-md-8">
         <div style="margin-left: -15px;"> To Join the CONVERSATION: </div>
@@ -91,7 +91,7 @@
           <div> <strong>Desktop:</strong> </div>
           <div> 
             Go to <%= link_to "ThinQ.tv", root_path %> and 
-            click <%= link_to " Join Conversation", user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), :class => 'btn btn-sm btn-primary fa fa-video-camera'%>
+            click <%= link_to " Join Conversation", user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), :class => "btn btn-sm btn-default fa fa-video-camera", :style => "border-color: FFB704 !important ;"%>
           </div>
           <div> <strong>Mobile: </strong> </div>
           <div> Download the JITSI meet app and join the CONVERSATION chatroom</div>
@@ -100,26 +100,29 @@
        <! Right Column -->
         <div class="col-md-4">
           <div style="text-align: center;"> 
-          <strong> Invite your fellow activists </strong>
+            <strong> Invite your fellow activists </strong>
           </div>
           <div class="row" style="display: flex; align-content: center; justify-content: center;">
             <div class="col-md-2">
-              <%= link_to root_path do %>
-                <%= image_tag "black_email_squared_icon.png", height: "25", width: "25"%>
+              <%= link_to root_path, target: :_blank do %>
+                <%= image_tag "email_icon.png", height: "25", width: "25"%>
               <% end %>
             </div>
             <div class="col-md-2">
-             <%= link_to root_path do %>
-                <%= image_tag "black_linkedin_squared_icon.png", height: "25", width: "25"%>
+             <%= link_to "www.twitter.com", target: :_blank do %>
+                <%= image_tag "linkedin_icon.png", height: "25", width: "25"%>
               <% end %>
             </div>
             <div class="col-md-2">
-              <%= link_to root_path do %>
-                <%= image_tag "black_twitter_squared_icon.png", height: "25", width: "25"%>
+              <%= link_to root_path, target: :_blank do %>
+                <%= image_tag "twitter_icon.png", height: "25", width: "25"%>
               <% end %>
             </div>
             <div class="col-md-2">
-              <%= image_tag("black_facebook_squared_icon.png", height: "25", width: "25") %>
+              <%= link_to "www.facebook.com", target: :_blank do %>
+                <%= image_tag "facebook_icon.png", height: "25", width: "25"%>
+              <% end %>
+            
             </div>
           </div>
         </div>
