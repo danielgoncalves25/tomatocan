@@ -15,16 +15,14 @@
 
 <!-- TOP HALF -->
 
-<div class="row">
-    <div class="col-md-12">
-        <h1 class="text-center"> Come Join the <%= @event.topic.upcase%> </h1>
-        <h3 class="text-center" style="font-size: 30px; line-height: 10%;"><b> <%= @event.name %>! </b></h2>
-        <h6 class="text-center" style="line-height: 3;";>Hosted by <%= link_to @user.name, user_profile_path(@user.permalink) %> </h6>
-    </div>
+<div class="row" style="padding-top:20px;">
+  <h1 class="text-center" style="font-size: 50px"> Come Join the Conversation </h1>
+  <h2 class="text-center" style="font-size: 30px; line-height: 10%;"><b> <%= @event.name %>! </b></h2>
+  <h6 class="text-center" style="line-height: 3;";>Hosted by <%= link_to @user.name, user_profile_path(@user.permalink) %> </h6>
 </div>
 
 <div id="event-page-layout" style="width: 100%; margin: auto;">
-  <div class="container" style="width: 1400px; padding-top:15px;">
+  <div class="container" style="width: 1400px; padding-top:15px; padding-bottom:20px; font-family: Helvetica Neue">
 
     <!-- PROFILE PICTURE -->
     <% if @user.profilepic.present? && @user.profilepic != '' %>
@@ -34,8 +32,8 @@
     <% end %>
 
     <% if !@user.profilepic.present? || @user.profilepic == '' %>
-      <div class="img-fluid" style="background-color: #fff; left: 75px; top: 0px; width: 300px; height: 0px; z-index: 2;">
-        <img height="300" width="300"> 
+      <div class="img-fluid" style="background-color: #F0F0F0; left: 75px; top: 0px; width: 300px; height: 0px; z-index: 2;">
+        <img height="300" width="300" src="https://www.beautycolorcode.com/ffffff-400x400.png"> 
       </div>
 
       <div class="img-fluid" style="left: 75px; top: 0px; width: 300px; height: 0px; z-index: 4;">
@@ -56,8 +54,7 @@
               <%= @event.start_at.strftime("%I:%M %p")%> PDT / <%= edt.strftime("%I:%M %p") %> EDT
             </b>
             <br> <%= @duration %> minutes <br> 
-          </p>
-          <br><br><br>
+          </p><br><br>
           
           <!-- JOIN BUTTON -->
           <% offset = -1 * Time.now.in_time_zone("Pacific Time (US & Canada)").gmt_offset/3600%>
@@ -66,66 +63,63 @@
           <% if ((Time.current - offset.hours) > Time.find_zone("UTC").parse(start_time) ) && ((Time.current - offset.hours) < Time.find_zone("UTC").parse(end_time)) %>
             <%= link_to " Join " + @displayconvo.topic + " NOW! ", user_viewer_path(@user.permalink, chatrm: @displayconvo.topic ), class: "btn btn-primary btn-lg", style: "color: #FFB704; margin-top: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 15px; border-color: #FFB704" %>
           <% end %>
+
         </div>
 
         <!-- RSVP -->
         <div class="col-lg-9 col-md-7 col-sm-5 col-xs-2" style="margin-top: 20px">
             <% @title="ThinQ.tv" %>
-              <div style="margin-top:0px; text-align:right">
-                <% if user_signed_in? %>
-                  <% if @event.user_id != current_user.id %>
-                    <%= form_for(@rsvp) do |f| %>
-                      <% if @rsvp.errors.any? %>
-                        <div id="error_explanation">
-                          <h2><%= pluralize(@rsvp.errors.count, "error") %> prohibited this rsvp from being saved:</h2>
-                          <ul>
-                            <% @rsvp.errors.full_messages.each do |msg| %>
-                              <li><%= msg %></li>
-                            <% end %>
-                          </ul>
-                        </div>
+              <div style=" text-align:right; top: 100px"> <%= form_for(@rsvp) do |f| %>
+                <% if @rsvp.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@rsvp.errors.count, "error") %> prohibited this rsvp from being saved:</h2>
+                    <ul>
+                      <% @rsvp.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
                       <% end %>
-          
-                      <%= f.hidden_field :event_id, :value => @event.id %>
-          
-                      <% flag = true %>
-          
-                      <% if user_signed_in? %>
-                        <%= f.hidden_field :user_id, :value => current_user.id %>
-                        <% @rsvps.each do |rsvp| %>
-                          <% if rsvp.user_id == current_user.id %>
-                            <% flag = false %>
-                          <% end %>
-                        <% end %>
-                      <% else %>
-                        <br><%= f.text_field :email, :style => "border: 1px solid grey; border-radius: 0px; font-weight: lighter; font-size: 17px;", placeholder: "Enter email" %>
+                    </ul>
+                  </div>
+                <% end %>
+                <%= f.hidden_field :event_id, :value => @event.id %>
+        
+                <% flag = true %>
+                  <% if user_signed_in? %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <% @rsvps.each do |rsvp| %>
+                      <% if rsvp.user_id == current_user.id %>
+                        <% flag = false %>
                       <% end %>
-          
-                      <% if flag %>
-                        <%= f.submit "RSVP NOW", :style => "color: black; background-color: #FFB704; font-size: 12px; padding: 5px 60px; height: font-weight: lighter; border-radius:0px; border-color:#FFB704;", :id => "RSVPsubmit" %><br>
+                  <% end %>
+                  <% else %>
+                    <br>
+                    <% if user_signed_in? %>
+                      <% if @event.user_id == current_user.id %>
+                        <% flag = false %>
                       <% end %>
+                    <% end%>
+                    <%= f.text_field :email, :style => "border: 1px solid grey; border-radius: 0px; font-weight: lighter; font-size: 17px;", placeholder: "Enter email" %>
+                    <% end %>
+                    <% if flag  %>
+                      <%= f.submit "RSVP NOW", :style => "color: black; background-color: #FFB704; font-size: 12px; padding: 5px 60px; height: font-weight: lighter; border-radius:0px; border-color:#FFB704;", :id => "RSVPsubmit" %><br>
                     <% end %>
                   <% end %>
-                <% end %>
-                <% if user_signed_in? %>
-                  <% if @event.user_id == current_user.id %>
-                    <%= link_to "Edit " + @event.topic, edit_event_path(@event), class: "btn btn-primary btn-lg", style: "border-color: #FFB704; color: #FFB704; margin-top: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 12px" %><br><br>
+                  <% if user_signed_in? %>
+                    <% if @event.user_id == current_user.id %>
+                      <%= link_to "Edit Conversation", edit_event_path(@event), class: "btn btn-primary btn-lg", style: "border-color: #FFB704; color: #FFB704; margin-top: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 12px" %><br><br>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
- 
-            <!-- EVENT DESCRIPTION -->
-            <div style = "padding: 3px 0px 3px 0px; text-align: right;">
-              <div style="padding: 5px 5px 5px 5px; color: white; font-size: 20px; background-color: #8C1D40;">
-                <% if @event.desc.present? %>
-                  <%= @event.desc.gsub(/\n/, '<br>').html_safe %> <br>
-                <% end %>
-              </div>
+          <!-- EVENT DESCRIPTION -->
+          <div style = "padding: 3px 0px 3px 0px; text-align: right;">
+            <div style="padding: 5px 5px 5px 5px; color: white; font-size: 18px; background-color: #8C1D40;">
+              <% if @event.desc.present? %>
+                <%= @event.desc.gsub(/\n/, '<br>').html_safe %> <br>
+              <% end %>
             </div>
-          <br>
+          </div> <br>
             <!-- Default dropleft button -->
+
               <% if @rsvps.count > 0 %>
-                <div class="btn-group" style="float: right;">
+                <div class="btn-group">
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" style="color: black; background-color: #FFB704; font-size: 12px; padding: 5px 60px; height: font-weight: lighter; border-radius:0px; border-color:#FFB704;" >
                     <span class="caret"></span> &nbsp; Who will be there &nbsp; <span><%= @rsvps.count %></span>
                   </button>
@@ -155,62 +149,58 @@
                     <% end %>
                   </div>
                 </div>
-              <% end %>        
+              <% end %>
           </div>
-        </div>
-        <br>
-      </div>      
-      <br><br>
+        </div><br>
+      </div> <br><br>
     </div>
      </div>
      <br>
-    </div>
-      <!-- BOTTOM HALF -->
-    <div class="row" style="padding-left: 60px;">
+ </div>
+ </div>
 
-      <! Left Column -->
-      <div class="col-md-8 col-sm-6">
-        <div> To Join the <%= @event.topic %>: </div>
-        <div class="col-md-12">
-          <div> <strong>Desktop:</strong> </div>
-          <div> 
-            Go to <%= link_to "ThinQ.tv", root_path %> and
-            click <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary fa fa-video-camera", style: "border-color: #FFB704; color: #FFB704; margin-top: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 12px" %>
-          </div>
-          <div> <strong>Mobile: </strong> </div>
-          <div> Download the JITSI meet app and join the <%= @event.topic.upcase %> chatroom</div>
+  <div class="row" style="padding-left: 60px; font-family: Helvetica Neue; color: #222222; font-size: 18px">
+    <! Left Column -->
+    <div class="col-md-8 col-sm-6">
+      <div> To Join the <%= @event.topic %>: </div>
+      <div class="col-md-12">
+        <div> <strong>Desktop:</strong> </div>
+        <div> 
+          Go to <%= link_to "ThinQ.tv", root_path %> and
+          click <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary fa fa-video-camera", style: "border-color: #FFB704; color: #FFB704; margin-top: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 12px" %>
         </div>
+          <div> <strong>Mobile: </strong> </div>
+        <div> Download the JITSI meet app and join the <%= @event.topic.upcase %> chatroom</div>
       </div>
-
-       <! Right Column -->
-        <div class="col-md-4 col-sm-6" style="padding-left: 15px;">
-          <div> 
-            <strong> Invite your fellow activists </strong>
+    </div>
+      <! Right Column -->
+      <div class="col-md-4 col-sm-6" style="padding-left: 15px;">
+        <div> 
+          <strong> Invite your fellow activists </strong>
+        </div>
+        <div class="row media-row" style="display: flex; padding-left: 0; margin-left: 30px;">
+            <div class="col-md-1 ">
+            <%= link_to "mailto:?&subject=Join%20me%20at%20ThinQ.tv!&body=Come%20join%20me%20for%20a%20live%20video%20Conversation%20"+ @event.name + "%20at%20" + @surl + "%20on%20" + 
+            + @event.start_at.strftime("%A, %B %d") + "%20" + @event.start_at.strftime("%I:%M %p")+ "%20PDT%20/%20" + edt.strftime("%I:%M %p") + "%20EDT.%20The%20Conversation%20will%20be%20about%20" + @event.desc, 
+            target: :_blank do %>
+              <%= image_tag "email_icon.png", height: "25", width: "25"%>
+            <% end %>
           </div>
-          <div class="row" style="display: flex; padding-left: 0;">
-            <div class="col-md-2">
-              <%= link_to "mailto:?&subject=Join%20me%20at%20ThinQ.tv!&body=Come%20join%20me%20for%20a%20live%20video%20Conversation%20"+ @event.name + "%20at%20" + @surl + "%20on%20" + 
-              + @event.start_at.strftime("%A, %B %d") + "%20" + @event.start_at.strftime("%I:%M %p")+ "%20PDT%20/%20" + edt.strftime("%I:%M %p") + "%20EDT.%20The%20Conversation%20will%20be%20about%20" + @event.desc, 
-              target: :_blank do %>
-                <%= image_tag "email_icon.png", height: "25", width: "25"%>
-              <% end %>
-            </div>
-            <div class="col-md-2">
-             <%= link_to "https://www.linkedin.com/shareArticle?mini=true&url="+@surl, target: :_blank do %>
-                <%= image_tag "linkedin_icon.png", height: "25", width: "25"%>
-              <% end %>
-            </div>
-            <div class="col-md-2">
-              <%= link_to "https://twitter.com/intent/tweet?text=Join " + @user.name + " for interesting conversation: " +
-                 @event.name + " on " + @event.start_at.strftime("%B %d, %I:%M %p") + " PDT at " + @surl, target: :_blank do %>
-                <%= image_tag "twitter_icon.png", height: "25", width: "25"%>
-              <% end %>
-            </div>
-            <div class="col-md-2">
-              <%= link_to "http://www.facebook.com/sharer.php?u=" + @surl, target: :_blank do %>
-                <%= image_tag "facebook_icon.png", height: "25", width: "25"%>
-              <% end %>
-            </div>
+          <div class="col-md-1">
+           <%= link_to "https://www.linkedin.com/shareArticle?mini=true&url="+@surl, target: :_blank do %>
+              <%= image_tag "linkedin_icon.png", height: "25", width: "25"%>
+            <% end %>
+          </div>
+          <div class="col-md-1">
+            <%= link_to "https://twitter.com/intent/tweet?text=Join " + @user.name + " for interesting conversation: " +
+               @event.name + " on " + @event.start_at.strftime("%B %d, %I:%M %p") + " PDT at " + @surl, target: :_blank do %>
+              <%= image_tag "twitter_icon.png", height: "25", width: "25"%>
+            <% end %>
+          </div>
+          <div class="col-md-1">
+            <%= link_to "http://www.facebook.com/sharer.php?u=" + @surl, target: :_blank do %>
+              <%= image_tag "facebook_icon.png", height: "25", width: "25"%>
+            <% end %>
           </div>
         </div>
       </div>
