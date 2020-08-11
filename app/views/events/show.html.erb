@@ -45,33 +45,27 @@
           <br>
 
           <!-- PROFILE PICTURE -->
-          <% if @user.profilepic.present? && @user.profilepic != '' %>
-            <%= image_tag @user.profilepic.url.to_s, height: "300", width: "300" %>
-          <% end %>
-          
-          <% if !@user.profilepic.present? || @user.profilepic == '' %>
-            <div class="img-fluid" style="height: 0px; z-index: 3;">
-              <img height="250" width="250" src="https://www.beautycolorcode.com/ffffff-400x400.png"> 
-            </div>
-
-            <div class="img-fluid" style="height: 0px; z-index: 4;">
-              <%= image_tag "logoDigitalHollow300.png", height: "300", width: "300" %> <br>
-            </div>
-          <% end %>
-          <br>
+          <div class="text-left">
+            <% if @user.profilepic.present? && @user.profilepic != '' %>
+              <%= image_tag @user.profilepic.url.to_s, height: "300", width: "300" %>
+            
+            <% else %>
+                <%= image_tag "yellow brain.png", height: "250", width: "250" %>
+            <% end %>
           
           <!-- JOIN BUTTON -->
-          <% offset = -1 * Time.now.in_time_zone("Pacific Time (US & Canada)").gmt_offset/3600%>
-          <% start_time = @event.start_at.strftime("%B %d %Y") + ' ' + @event.start_at.strftime("%T") %>
-          <% end_time = @event.end_at.strftime("%B %d %Y") + ' ' + @event.end_at.strftime("%T") %>
-          <% if ((Time.current - offset.hours) > Time.find_zone("UTC").parse(start_time) ) && ((Time.current - offset.hours) < Time.find_zone("UTC").parse(end_time)) %>
-            <%= link_to " Join " + @displayconvo.topic + " NOW! ", user_viewer_path(@user.permalink, chatrm: @displayconvo.topic ), class: "btn btn-primary border-warning text-warning btn-sm mt-2 mb-2" %>
-          <% end %>
+            <% offset = -1 * Time.now.in_time_zone("Pacific Time (US & Canada)").gmt_offset/3600%>
+            <% start_time = @event.start_at.strftime("%B %d %Y") + ' ' + @event.start_at.strftime("%T") %>
+            <% end_time = @event.end_at.strftime("%B %d %Y") + ' ' + @event.end_at.strftime("%T") %>
+            <% if ((Time.current - offset.hours) > Time.find_zone("UTC").parse(start_time) ) && ((Time.current - offset.hours) < Time.find_zone("UTC").parse(end_time)) %>
+              <%= link_to " Join " + @displayconvo.topic + " NOW! ", user_viewer_path(@user.permalink, chatrm: @displayconvo.topic ), class: "btn btn-primary border-warning text-warning btn-sm mt-2 mb-2" %>
+            <% end %>
+          </div>
 
         </div>
 
         <!-- RSVP -->
-        <div class="mt-4 col-lg-9 col-md-6 col-sm-3 col-xs-2">
+        <div class="mt-4 col-lg-9 col-md-6 col-sm-4 col-xs-2">
             <% @title="ThinQ.tv" %>
               <div class="text-right mt-0">
                 <%= form_for(@rsvp) do |f| %>
@@ -127,12 +121,7 @@
         
           <br>
           <br>
-          <br>
-          <br>
-          <br>
-          <br>
-
-
+  
             <!-- Default dropleft button -->
            
             
