@@ -178,28 +178,28 @@
             </div>
             <div class="col-md-12">
                 <div>
-                    <p> <strong> Desktop: </strong> </p>
+                   <strong> Desktop: </strong>
                 </div>
                 <div>
-                    <p> <small> Go to <%= link_to "ThinQ.tv", root_path %> and
-                            click <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary border-warning text-warning fa fa-video-camera mt-2 mb-2" %>
-                        </small> </p>
+                  <p> <small> Go to <%= link_to "ThinQ.tv", root_path %> and
+                    click </small> <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary border-warning text-warning fa fa-video-camera mt-2 mb-2" %> 
+                  </p>
                 </div>
                 <div>
-                    <p> <strong>Mobile: </strong> </p>
+                   <strong>Mobile: </strong>
                 </div>
                 <div>
-                    <p> <small> Download the JITSI meet app and join the <%= @event.topic.upcase %> chatroom
-                </div> </small> </p>
+                    <p> <small> Download the JITSI meet app and join the <%= @event.topic.upcase %> chatroom </small> </p>
+                </div>
             </div>
         </div>
 
         <! Right Column -->
             <div class="col-md-4 col-sm-6 pl-3">
                 <div>
-                  <p> <strong> Invite your fellow activists </strong> </p>
+                   <strong> Invite your fellow activists </strong> 
                 </div>
-                <div class="row pl-0 d-flex d-sm-flex">
+                <div class="row pl-10 d-flex d-sm-flex">
                     <div class="col-md-1">
                       <%= link_to "mailto:?&subject=Join%20me%20at%20ThinQ.tv!&body=Come%20join%20me%20for%20a%20live%20video%20Conversation%20"+ @event.name + "%20at%20" + @surl + "%20on%20" + 
                       + @event.start_at.strftime("%A, %B %d") + "%20" + @event.start_at.strftime("%I:%M %p")+ "%20PDT%20/%20" + edt.strftime("%I:%M %p") + "%20EDT.%20The%20Conversation%20will%20be%20about%20" + @event.desc, 
