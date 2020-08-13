@@ -56,7 +56,7 @@
                     <% start_time = @event.start_at.strftime("%B %d %Y") + ' ' + @event.start_at.strftime("%T") %>
                     <% end_time = @event.end_at.strftime("%B %d %Y") + ' ' + @event.end_at.strftime("%T") %>
                     <% if ((Time.current - offset.hours) > Time.find_zone("UTC").parse(start_time) ) && ((Time.current - offset.hours) < Time.find_zone("UTC").parse(end_time)) %>
-                    <%= link_to " Join " + @displayconvo.topic + " NOW! ", user_viewer_path(@user.permalink, chatrm: @displayconvo.topic ), class: "btn btn-primary border-warning text-warning btn-sm mt-2 mb-2" %>
+                    <%= link_to " Join " + @event.topic + " NOW! ", user_viewer_path(@user.permalink, chatrm: @event.topic ), class: "btn btn-primary border-warning text-warning btn-sm mt-2 mb-2" %>
                     <% end %>
                 </div>
 
@@ -170,7 +170,6 @@
 
 <!-- BOTTOM HALF -->
 <div class="row pl-5 py-3">
-
     <! Left Column -->
         <div class="col-md-8 col-sm-6">
             <div>
@@ -181,15 +180,15 @@
                    <strong> Desktop: </strong>
                 </div>
                 <div>
-                  <p> <small> Go to <%= link_to "ThinQ.tv", root_path %> and
-                    click </small> <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary border-warning text-warning fa fa-video-camera mt-2 mb-2" %> 
+                  <p class="mb-0 mt-0"> <small> Go to <%= link_to "ThinQ.tv", root_path %> and
+                    click </small> <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary text-warning fa fa-video-camera" %> 
                   </p>
                 </div>
                 <div>
                    <strong>Mobile: </strong>
                 </div>
                 <div>
-                    <p> <small> Download the JITSI meet app and join the <%= @event.topic.upcase %> chatroom </small> </p>
+                    <p class="mb-0 mt-0"> <small> Download the JITSI meet app and join the <%= @event.topic.upcase %> chatroom </small> </p>
                 </div>
             </div>
         </div>
@@ -199,7 +198,7 @@
                 <div>
                    <strong> Invite your fellow activists </strong> 
                 </div>
-                <div class="row pl-10 d-flex d-sm-flex">
+                <div class="row pl-8 d-flex d-sm-flex">
                     <div class="col-md-1">
                       <%= link_to "mailto:?&subject=Join%20me%20at%20ThinQ.tv!&body=Come%20join%20me%20for%20a%20live%20video%20Conversation%20"+ @event.name + "%20at%20" + @surl + "%20on%20" + 
                       + @event.start_at.strftime("%A, %B %d") + "%20" + @event.start_at.strftime("%I:%M %p")+ "%20PDT%20/%20" + edt.strftime("%I:%M %p") + "%20EDT.%20The%20Conversation%20will%20be%20about%20" + @event.desc, 
