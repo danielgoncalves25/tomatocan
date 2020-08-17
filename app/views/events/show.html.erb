@@ -33,7 +33,7 @@
         <div class="aboutHeader row">
             <div class="mt-4 col-lg-4 col-md-5 col-sm-7">\
                 <!-- WHEN -->
-                <p class="white text-left">
+                <p class="text-white text-left">
                     <b>
                         <% edt = @event.start_at + 3.hours %>
                         <%= @event.start_at.strftime("%A, %B %d") %> <br>
@@ -109,7 +109,7 @@
                     <div class="pt-5 pb-5 pl-0 pr-0">
                         <div class="p2">
                             <% if @event.desc.present? %>
-                            <p class="text-left white"> <%= @event.desc.gsub(/\n/, '<br>').html_safe %> </p>
+                            <p class="text-left text-white"> <%= @event.desc.gsub(/\n/, '<br>').html_safe %> </p>
                             <% end %>
                         </div>
                     </div>
