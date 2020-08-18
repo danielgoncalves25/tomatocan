@@ -1,40 +1,53 @@
-<div style="height: 70px;"></div>
-<div class="container">
-
 <p id="notice"><%= notice %></p>
 
-  <% if @merchandise.itempic.present? && @merchandise.itempic != '' %>
-    <%= image_tag(@merchandise.itempic.url.to_s, height: '200px') %><br>
-  <% end %>
-
-  <h3><%= @merchandise.name %> </h3>
-    <% if @user.stripeid.present? || @user.id == 143  %>
-      <!--Download perk file-->
-
-      <% if @merchandise.audio.present? %>
-      <%end%>
-
-      <%if @merchandise.buttontype == 'Donate'%>
-        <%= link_to "Donate Now", new_purchase_path(:merchandise_id => @merchandise.id, :group_id => params[:groupid]), :class => "btn btn-primary" %> 
-      <%else%>
-        <%= link_to "Buy Now", new_purchase_path(:merchandise_id => @merchandise.id, :group_id => params[:groupid]), :class => "btn btn-primary" %> 
-      <%end%>
-      <% if @merchandise.price.present? %>
-        $<%= sprintf('%.2f', @merchandise.price) %> USD  <br>
-      <% end %>
-    <% else %>
-        <%= @user.name %> has not made this item available yet. Please check back later to purchase. <%= @merchandise.name %>.
+<div class="row px-4 ml-3 mr-3" id="home">
+  <div class=" col-lg-9 col-mg-8 col-sm-12 com-xs-12 text-white text-left font-weight-normal">
+    <br>
+    <% if @merchandise.desc.present? %>
+      <p> Reward Description </p>
+      <%= simple_format @merchandise.desc.gsub(/\n/, '<br>') %>
     <% end %>
 
-<div class="goals">
-  <% if @merchandise.desc.present? %> 
-    <br><%= simple_format @merchandise.desc.gsub(/\n/, '<br>') %><br>
-  <% end %> 
-      <% if @merchandise.youtube? %>
-        <% if @merchandise.youtube.match(/[0-9A-Za-z]/) && @merchandise.youtube.length < 20 %>
-          <iframe width="420" height="315" src="//www.youtube.com/embed/<%= @merchandise.youtube %>" frameborder="0" allowfullscreen></iframe>
-        <% end %>
-      <% end %>
+    <p> Attached Files: </p>
+    <% if @merchandise.graphic.present?%>
+      <%= @merchandise.graphic_url.split("/")[5]%>
+    <% end %>
+    <% if @merchandise.audio.present?%>
+      <%= @merchandise.audio_url.split("/")[5]%>
+    <% end %>
+    <% if @merchandise.video.present?%>
+      <%= @merchandise.video_url.split("/")[5]%>
+    <% end %>
+    <% if @merchandise.merchpdf.present?%>
+      <%= @merchandise.merchpdf_url.split("/")[5]%>
+    <% end %>
+    <% if @merchandise.merchepub.present?%>
+      <%= @merchandise.merchepub_url.split("/")[5]%>
+    <% end %>
+    <% if @merchandise.merchmobi.present?%>
+      <%= @merchandise.merchmobi_url.split("/")[5]%>
+    <% end %>
+    <% if @merchandise.itempic.present?%>
+      <%= @merchandise.itempic_url.split("/")[5]%>
+    <% end %>
+    <br> <br>
+  </div>
 </div>
-<br><br><br><br><br><br><br><br>
+
+<div class="row px-4 pt-3" id="youtube-row">
+  <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+    <% if @merchandise.graphic.present?%>
+        <%= image_tag @merchandise.graphic_url, height: "400", width: "800" %>
+      <% end %>
+  </div>
+</div>
+
+<div class="row px-4 pt-3" id="youtube-row">
+  <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+    <% if @merchandise.youtube? %>
+      <% if @merchandise.youtube.match(/[0-9A-Za-z]/) && @merchandise.youtube.length < 20 %>
+        <iframe width="420" height="315" src="//www.youtube.com/embed/<%= @merchandise.youtube %>" frameborder="0" allowfullscreen></iframe>
+      <% end %>
+    <% end %>
+  </div>
 </div>
