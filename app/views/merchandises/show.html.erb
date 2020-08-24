@@ -33,7 +33,7 @@
 
 <!--BOTTOM HALF-->
 <br>
-<div class="row px-4 ml-3 mr-3" id="home">
+<div class="row px-4 ml-5 mr-5" id="home">
   <div class="col-lg-9 col-mg-8 col-sm-12 com-xs-12 text-white text-left font-weight-normal">
     <br>
     <% if @merchandise.desc.present? %>
@@ -72,44 +72,44 @@
   </div>
 </div>
 
-<div class="row px-4 pt-3" id="graphic-row">
-  <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
-    <% if @merchandise.graphic.present?%>
-        <%= image_tag @merchandise.graphic_url, height: "450" %>
-      <% end %>
+<% if @merchandise.graphic.present?%>
+  <div class="row px-4 pt-3" id="graphic-row">
+    <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+      <%= image_tag @merchandise.graphic_url, height: "450" %>
+    </div>
   </div>
-</div>
-<div class="row px-4 pt-3" id="pdf-row">
-  <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
-    <% if @merchandise.merchpdf.present?%>
-        <%= image_tag @merchandise.merchpdf_url, height: "450" %>
-      <% end %>
-  </div>
-</div>
+<% end %>
 
-<div class="row px-4 pt-3" id="youtube-row">
-  <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
-    <% if @merchandise.youtube? %>
-      <% if @merchandise.youtube.match(/[0-9A-Za-z]/) && @merchandise.youtube.length < 20 %>
+<% if @merchandise.merchpdf.present?%>
+  <div class="row px-4 pt-3" id="pdf-row">
+    <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+      <%= image_tag @merchandise.merchpdf_url, height: "450" %>
+    </div>
+  </div>
+<% end %>
+
+<% if @merchandise.youtube? %>
+  <% if @merchandise.youtube.match(/[0-9A-Za-z]/) && @merchandise.youtube.length < 20 %>
+    <div class="row px-4 pt-3" id="youtube-row">
+      <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
         <iframe width="800" height="450" src="//www.youtube.com/embed/<%= @merchandise.youtube %>" frameborder="0" allowfullscreen></iframe>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
 
-<div class="row px-4 pt-3" id="audio-row">
-  <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
-    <% if @merchandise.audio.present?%>
-        <%= audio_tag @merchandise.audio_url, :controls => true %>
-      <% end %>
-  </div>
-</div>
-
-<div class="row px-4 pt-3" id="audio-row">
-  <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
-    <% if @merchandise.video.present?%>
+<% if @merchandise.video.present?%>
+  <div class="row px-4 pt-3" id="video-row">
+    <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
       <%= video_tag @merchandise.video_url.to_s, height: "450", :controls => true %>
     <% end %>
   </div>
 </div>
 
+<% if @merchandise.audio.present?%>
+  <div class="row px-4 pt-3" id="audio-row">
+    <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+      <%= audio_tag @merchandise.audio_url, :controls => true %>
+    </div>
+  </div>
+<% end %>

@@ -9,7 +9,6 @@
         <b>* EMAIL is required:</b>
         <%= f.text_field :email, placeholder: "Enter email", size: 50 %><br><br>
       <% end %>
-
       <%= f.hidden_field :stripe_card_token %>
       <%= f.hidden_field :group_id, value: params[:group_id] %>
       <%= f.hidden_field :pricesold, value: params[:pricesold] %>
@@ -21,7 +20,6 @@
           <%= msg %>
         <% end %>
       <% end %>
-
       <div class="field">
         <% if params[:group_id].present? %>
           <% groupsupported = Group.find(params[:group_id]) %>
