@@ -28,10 +28,10 @@
     <%= @user.name %> has not made this item available yet. Please check back later to purchase. <%= @merchandise.name %>.
     <% end %>
 </div>
-
 <!--BOTTOM HALF-->
 <br>
-<div class="row px-4 ml-lg-5 mr-lg-5" id="home">
+<%= @merchandise.graphic_url%>
+<div class="row bg-primary px-4 ml-lg-5 mr-lg-5">
     <div class="col-lg-9 col-mg-8 col-sm-12 com-xs-12 text-white text-left font-weight-normal">
         <br>
         <% if @merchandise.desc.present? %>
@@ -39,67 +39,16 @@
             <%= simple_format @merchandise.desc.gsub(/\n/, '<br>') %> </p>
         <% end %>
 
-        <% if @merchandise.audio.present? || @merchandise.merchepub.present? || @merchandise.merchmobi.present? || @merchandise.merchpdf.present? || @merchandise.graphic.present? || @merchandise.video.present? %>
-        <p class="white"> <strong> Attached Files: </strong>
-            <br>
-            <% end %>
-            <% if @merchandise.graphic.present?%>
-            <%= @merchandise.graphic_url.split("/")[5]%>
-            <br>
-            <% end %>
-            <% if @merchandise.audio.present?%>
-            <%= @merchandise.audio_url.split("/")[4]%>
-            <br>
-            <% end %>
-            <% if @merchandise.video.present?%>
-            <%= @merchandise.video_url.split("/")[4]%>
-            <br>
-            <% end %>
-            <% if @merchandise.merchpdf.present?%>
-            <%= @merchandise.merchpdf_url.split("/")[4]%>
-            <br>
-            <% end %>
-            <% if @merchandise.merchepub.present?%>
-            <%= @merchandise.merchepub_url.split("/")[4]%>
-            <br>
-            <% end %>
-            <% if @merchandise.merchmobi.present?%>
-            <%= @merchandise.merchmobi_url.split("/")[4]%>
-            <br>
-            <% end %> </p>
+
     </div>
 </div>
 
 <% if @merchandise.youtube? %>
-    <% if @merchandise.youtube.match(/[0-9A-Za-z]/) && @merchandise.youtube.length < 20 %>
-    <div class="row px-4 pt-3" id="youtube-row">
-        <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
-          <iframe width="800" height="450" src="//www.youtube.com/embed/<%= @merchandise.youtube %>" frameborder="0" allowfullscreen></iframe>
-        </div>
+  <% if @merchandise.youtube.match(/[0-9A-Za-z]/) && @merchandise.youtube.length < 20 %>
+  <div class="row px-4 pt-3" id="youtube-row">
+    <div class="col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+      <iframe width="800" height="450" src="//www.youtube.com/embed/<%= @merchandise.youtube %>" frameborder="0" allowfullscreen></iframe>
     </div>
-    <% end %>
-<% end %>
-
-<% if @merchandise.audio.present?%>
-  <%= link_to "Download Audio File Here", @merchandise.audio_url, download: @merchandise.audio_url.split("/")[4]%><br>
-<% end %>
-
-<% if @merchandise.video.present?%>
-  <%= link_to "Download Video File Here", @merchandise.video_url, download: @merchandise.video_url.split("/")[4]%><br>
-<% end %>
-
-<% if @merchandise.graphic.present?%>
-  <%= link_to "Download Image File Here", @merchandise.graphic_url, download: @merchandise.graphic_url.split("/")[5]%><br>
-<% end %>
-
-<% if @merchandise.merchpdf.present?%>
-  <%= link_to "Download PDF File Here", @merchandise.merchpdf_url, download: @merchandise.merchpdf_url.split("/")[4] %><br>
-<% end %>
-
-<% if @merchandise.merchepub.present?%>
-  <%= link_to "Download EPub File Here", @merchandise.merchepub_url, download: @merchandise.merchepub_url.split("/")[4]%><br>
-<% end %>
-
-<% if @merchandise.merchmobi.present?%>
-  <%= link_to "Download Mobi File Here", @merchandise.merchmobi_url, download: @merchandise.merchmobi_url.split("/")[4]%><br>
+  </div>
+  <% end %>
 <% end %>
