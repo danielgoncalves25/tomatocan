@@ -9,11 +9,8 @@ $link-hover-decoration: underline !default;
 
 @import url("https://use.typekit.net/fxy5ytx.css");
 
-$font-family-sans-serif: "neuzerit-grotesk",
-Avenir,
-Helvetica,
-Arial,
-sans-serif;
+$font-family-sans-serif: Helvetica,
+Arial;
 
 
 $border-radius-base: 0px !default;
@@ -82,6 +79,24 @@ h2 {
   line-height: 41px;
 }
 
+p.black {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+  color: black;
+}
+
+p.white {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+  color: white;
+}
+
 //FOOTER.SCSS: This is all the css used for the footer
 footer {
   position: relative;
@@ -93,7 +108,6 @@ footer {
   background-color: $brand-primary;
   font-family: Helvetica;
   font-size: 12px;
-
 }
 
 #copyright {
@@ -318,22 +332,23 @@ body {
     padding-right: 25px;
   }
 
-  .col-md-4 {
-    padding-left: 50px;
-  }
+  // Lisa doesnt want this, use bootstrap styling for this
+  // .col-md-4 {
+  //   padding-left: 50px;
+  // }
 
-  .col-md-5 h3 {
-    padding-left: 80px;
-  }
+  // .col-md-5 h3 {
+  //   padding-left: 80px;
+  // }
 
-  .col-md-5 p {
-    padding-left: 40px;
-    padding-right: 10px;
-  }
+  // .col-md-5 p {
+  //   padding-left: 40px;
+  //   padding-right: 10px;
+  // }
 
-  .col-md-8 {
-    padding-left: 40px;
-  }
+  // .col-md-8 {
+  //   padding-left: 40px;
+  // }
 
   .enter_email {
     width: 120px;
@@ -363,9 +378,10 @@ body {
     clear: left;
   }
 
-  .col-md-4 {
-    padding: 5px 20px;
-  }
+  //  Lisa doesnt want this
+  // .col-md-4 {
+  //   padding: 5px 20px;
+  // }
 }
 
 //This stylesheet is for the Create Perk form.

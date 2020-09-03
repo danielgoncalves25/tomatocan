@@ -30,16 +30,36 @@
 </div>
 <!--BOTTOM HALF-->
 <br>
-<%= @merchandise.graphic_url%>
 <div class="row bg-primary px-4 ml-lg-5 mr-lg-5">
     <div class="col-lg-9 col-mg-8 col-sm-12 com-xs-12 text-white text-left font-weight-normal">
         <br>
         <% if @merchandise.desc.present? %>
-        <p class="white"><strong> Reward Description </strong>
-            <%= simple_format @merchandise.desc.gsub(/\n/, '<br>') %> </p>
+          <p class="white"><strong> Reward Description </strong></p>
+          <%= simple_format @merchandise.desc.gsub(/\n/, '<br>') %>
         <% end %>
 
-
+        <% if @merchandise.audio_url.present? || @merchandise.merchepub_url.present? || @merchandise.merchmobi_url.present? || @merchandise.merchpdf_url.present? || @merchandise.graphic_url.present? || @merchandise.video_url.present? %>
+          <p class="text-white"> <strong> Attached Files: </strong><br>
+        <% end %>
+        <% if @merchandise.graphic_url.present?%>
+          <%= @merchandise.graphic_url.split("/")[5]%><br>
+        <% end %>
+        <% if @merchandise.audio_url.present?%>
+          <%= @merchandise.audio_url.split("/")[4]%><br>
+        <% end %>
+        <% if @merchandise.video_url.present?%>
+          <%= @merchandise.video_url.split("/")[4]%><br>
+        <% end %>
+        <% if @merchandise.merchpdf_url.present?%>
+          <%= @merchandise.merchpdf_url.split("/")[4]%><br>
+        <% end %>
+        <% if @merchandise.merchepub_url.present?%>
+          <%= @merchandise.merchepub_url.split("/")[4]%><br>
+        <% end %>
+        <% if @merchandise.merchmobi_url.present?%>
+          <%= @merchandise.merchmobi_url.split("/")[4]%><br>
+        <% end %> 
+        </p>
     </div>
 </div>
 
