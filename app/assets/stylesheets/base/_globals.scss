@@ -97,6 +97,18 @@ p.white {
   color: white;
 }
 
+html, body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  padding-top: 0px;
+  display: flex !important;
+  min-height: 100vh !important;
+  flex-direction: column !important;
+  overscroll-behavior: none !important;
+}
+
 //FOOTER.SCSS: This is all the css used for the footer
 footer {
   position: relative;
@@ -274,7 +286,7 @@ ul li a.toggle:hover {
     padding-left: 20px;
     padding-right: 0px;
   }
-  
+
   #rewards, #connect {
     padding-top: 20px;
     padding-left: 25px;
