@@ -130,10 +130,6 @@ footer p.f-header {
   font-size: 14px;
 }
 
-footer div.col-sm-3 {
-  font-size: 14px;
-}
-
 footer small {
   color: $brand-secondary;
 }
@@ -142,15 +138,6 @@ footer small {
 //HEADER.SCSS: This is all the css used for the header/navbar
 .navbar-btn {
   margin-right: 25px;
-
-
-  .landing-sign-up-btn {
-    width: 100px;
-  }
-
-  .landing-sign-in-btn {
-    width: 100px;
-  }
 
   .btn-primary {
     color: $brand-gray;
@@ -168,23 +155,12 @@ footer small {
   }
 }
 
-.navbar-brand {
-  padding: 4px 4px 4px 15px;
-}
-
-.navbar-default .navbar-nav>li>a {
-  color: $brand-gray;
-  font-family: "Helvetica";
-
-}
-
 //when hovering over logo make it slightly bigger
 #navbarLogo {
   &:hover {
     transform: scale(1.15) rotate(-12deg);
   }
 }
-
 
 //FAQ.SCSS: This is all the css specific to the FAQ page
 @import url('https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300,400,600');
@@ -256,24 +232,6 @@ ul li a.toggle:hover {
 //HOME.SCSS: This is all the css specific to the HOME page
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet');
 
-html,
-body {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  overflow-x: hidden;
-  padding-top: 0px;
-}
-
-#countdown_clock h2 {
-  font-weight: bolder;
-  margin-bottom: 20px;
-  font-size: 40px;
-  color: #8C1D40;
-  font-family: Oswald, sans-serif;
-  text-align: center;
-}
-
 #clockdiv {
   color: #fff;
   display: inline-block;
@@ -316,39 +274,12 @@ body {
     padding-left: 20px;
     padding-right: 0px;
   }
-
-  .topic_link {
-    font-size: 15px;
-  }
-
-  #buttonTitle {
-    padding-top: 2px;
-  }
-
-  #rewards,
-  #connect {
+  
+  #rewards, #connect {
     padding-top: 20px;
     padding-left: 25px;
     padding-right: 25px;
   }
-
-  // Lisa doesnt want this, use bootstrap styling for this
-  // .col-md-4 {
-  //   padding-left: 50px;
-  // }
-
-  // .col-md-5 h3 {
-  //   padding-left: 80px;
-  // }
-
-  // .col-md-5 p {
-  //   padding-left: 40px;
-  //   padding-right: 10px;
-  // }
-
-  // .col-md-8 {
-  //   padding-left: 40px;
-  // }
 
   .enter_email {
     width: 120px;
@@ -377,11 +308,6 @@ body {
     padding-left: 10px;
     clear: left;
   }
-
-  //  Lisa doesnt want this
-  // .col-md-4 {
-  //   padding: 5px 20px;
-  // }
 }
 
 //This stylesheet is for the Create Perk form.
