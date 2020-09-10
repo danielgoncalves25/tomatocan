@@ -9,7 +9,8 @@ $link-hover-decoration: underline !default;
 
 @import url("https://use.typekit.net/fxy5ytx.css");
 
-$font-family-sans-serif: Helvetica;
+$font-family-sans-serif: Helvetica,
+Arial;
 
 
 $border-radius-base: 0px !default;
@@ -17,9 +18,7 @@ $border-radius-large: 0px !default;
 $border-radius-small: 0px !default;
 $navbar-margin-bottom: 0px !default;
 
-
 //GLOBALS.SCSS: The following css can be found throughout the site
-
 main {
   flex: 1 !important;
 }
@@ -43,10 +42,6 @@ body {
   margin-right: 10px;
 }
 
-.navbar-default {
-  background-color: $brand-primary;
-}
-
 .overflow-visible {
   overflow: visible;
 }
@@ -63,6 +58,7 @@ $overlaid-text: 0 0 4px rgba(0, 0, 0, .8) !important;
   }
 }
 
+/* Design Style Guide*/
 //FONTS
 h1.white {
   color: #fff;
@@ -94,6 +90,39 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 41px;
+}
+
+p.black {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+  color: black;
+}
+
+p.white {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+  color: white;
+}
+
+//Button Styles
+.btn-primary {
+  color: $brand-gray;
+  background-color: $brand-primary;
+  border-color: #771936;
+  font: "Helvetica"
+}
+
+.btn-default {
+  color: $brand-secondary;
+  background-color: $brand-primary;
+  border-color: $brand-secondary;
+  font: "Helvetica"
 }
 
 //FOOTER.SCSS: This is all the css used for the footer
@@ -129,36 +158,19 @@ footer p.f-header {
   font-size: 14px;
 }
 
-footer div.col-sm-3 {
-  font-size: 14px;
-}
-
 footer small {
   color: $brand-secondary;
 }
 
-
 //HEADER.SCSS: This is all the css used for the header/navbar
-.navbar-btn {
-  margin-right: 25px;
-
-  .btn-primary {
-    color: $brand-gray;
-    background-color: $brand-primary;
-    ;
-    border-color: #771936;
-    font: "Helvetica"
-  }
-
-  .btn-default {
-    color: $brand-secondary;
-    background-color: $brand-primary;
-    border-color: $brand-secondary;
-    font: "Helvetica"
-  }
+.navbar-default {
+  background-color: $brand-primary;
 }
 
-//when hovering over logo make it slightly bigger
+.navbar-btn {
+  margin-right: 25px;
+}
+
 #navbarLogo {
   &:hover {
     transform: scale(1.15) rotate(-12deg);
@@ -420,13 +432,9 @@ td {
 }
 
 //MAIN.SCSS: General settings to import bootstrap and change some more default settings
-
 //Overrides Bootstrap-defined variables
 $primary: #8C1D40;
 $baseFontFamily: Helvetica !default;
-//Bootstrap files
-//@import "bootstrap-sprockets";
-
 @import "font-awesome";
 //Individual stylesheets loaded here
 @import "bootstrap";

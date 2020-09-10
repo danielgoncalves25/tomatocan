@@ -16,18 +16,10 @@
 <!-- TOP HALF -->
 
 <div class="pt-5 pb-3">
-    <<<<<<< HEAD <h1 class="maroon text-center text-dark pb-1"> Come Join the <%= @event.topic.upcase %> </h1>
-        <p class="text-center event-name mb-2"><b> <%= @event.name %>! </b></p>
-        =======
-        <h1 class="maroon text-center pb-1"> Come Join the <%= @event.topic.upcase %> </h1>
-        <h2 class="text-center mb-2"><%= @event.name %>! </h2>
-        >>>>>>> eea23d2e7972e4aa8a362d154925dd5ddb5a0494
-        <p class="text-center"> <small> Hosted by <%= link_to @user.name, user_profile_path(@user.permalink) %> </small></p>
+    <h1 class="maroon text-center pb-1"> Come Join the <%= @event.topic.upcase %> </h1>
+    <h2 class="text-center mb-2"><%= @event.name %>! </h2>
+    <p class="text-center"> <small> Hosted by <%= link_to @user.name, user_profile_path(@user.permalink) %> </small></p>
 </div>
-
-
-
-
 
 <div class="px-4" id="event-page-layout">
 
@@ -147,9 +139,7 @@
                             <% end %>
                         </div>
                     </div>
-
                     <% end %>
-
                 </div>
             </div>
         </div><br>
@@ -171,7 +161,7 @@
                 </div>
                 <div>
                     <p class="mb-0 mt-0"> <small> Go to <%= link_to "ThinQ.tv", root_path %> and
-                            click </small> <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary text-warning fa fa-video-camera" %>
+                            click </small> <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-default text-warning fa fa-video-camera" %>
                     </p>
                 </div>
                 <div>
