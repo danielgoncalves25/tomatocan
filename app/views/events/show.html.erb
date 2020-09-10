@@ -16,9 +16,13 @@
 <!-- TOP HALF -->
 
 <div class="pt-5 pb-3">
-    <h1 class="maroon text-center text-dark pb-1"> Come Join the <%= @event.topic.upcase %> </h1>
-    <p class="text-center event-name mb-2"><b> <%= @event.name %>! </b></p>
-    <p class="text-center"> <small> Hosted by <%= link_to @user.name, user_profile_path(@user.permalink) %> </small></p>
+    <<<<<<< HEAD <h1 class="maroon text-center text-dark pb-1"> Come Join the <%= @event.topic.upcase %> </h1>
+        <p class="text-center event-name mb-2"><b> <%= @event.name %>! </b></p>
+        =======
+        <h1 class="maroon text-center pb-1"> Come Join the <%= @event.topic.upcase %> </h1>
+        <h2 class="text-center mb-2"><%= @event.name %>! </h2>
+        >>>>>>> eea23d2e7972e4aa8a362d154925dd5ddb5a0494
+        <p class="text-center"> <small> Hosted by <%= link_to @user.name, user_profile_path(@user.permalink) %> </small></p>
 </div>
 
 
@@ -82,24 +86,24 @@
 
                     <% flag = true %>
                     <% if user_signed_in? %>
-                        <%= f.hidden_field :user_id, :value => current_user.id %>
-                        <% @rsvps.each do |rsvp| %>
-                        <% if rsvp.user_id == current_user.id %>
-                            <% flag = false %>
-                        <% end %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <% @rsvps.each do |rsvp| %>
+                    <% if rsvp.user_id == current_user.id %>
+                    <% flag = false %>
+                    <% end %>
                     <% end %>
                     <% else %>
                     <%= f.text_field :email, placeholder: "Enter email" %>
                     <% end %>
 
-                        <% if flag %>
-                            <%= f.submit "RSVP NOW", :class => "btn-sm bg-warning text-body border-warning pt-1 pb-1 pl-5 pr-5", :id => "RSVPsubmit" %>
-                        <% end %>
+                    <% if flag %>
+                    <%= f.submit "RSVP NOW", :class => "btn-sm bg-warning text-body border-warning pt-1 pb-1 pl-5 pr-5", :id => "RSVPsubmit" %>
+                    <% end %>
                     <% end %>
                     <% if user_signed_in? %>
-                        <% if @event.user_id == current_user.id %>
-                            <%= link_to "Edit " + @event.topic , edit_event_path(@event), class: "btn btn-primary btn-sm border-warning text-warning mt-3 mb-3" %>
-                        <% end %>
+                    <% if @event.user_id == current_user.id %>
+                    <%= link_to "Edit " + @event.topic , edit_event_path(@event), class: "btn btn-primary btn-sm border-warning text-warning mt-3 mb-3" %>
+                    <% end %>
                     <% end %>
                     <!-- EVENT DESCRIPTION -->
                     <div class="pt-5 pb-5 pl-0 pr-0">
@@ -159,7 +163,7 @@
     <! Left Column -->
         <div class="col-md-8 col-sm-6 pt-4">
             <div>
-                <h2 class="new text-dark"> <b> To Join the <%= @event.topic %>: </b></h2>
+                <h2 class="text-dark"> <b> To Join the <%= @event.topic %>: </b></h2>
             </div>
             <div class="col-md-12">
                 <div>
@@ -193,16 +197,16 @@
                         <% end %>
 
                         <%= link_to "https://www.linkedin.com/shareArticle?mini=true&url="+@surl, target: :_blank do %>
-                            <%= image_tag "linkedin_icon.png", height: "25", width: "25"%>
+                        <%= image_tag "linkedin_icon.png", height: "25", width: "25"%>
                         <% end %>
 
                         <%= link_to "https://twitter.com/intent/tweet?text=Join " + @user.name + " for interesting conversation: " +
                         @event.name + " on " + @event.start_at.strftime("%B %d, %I:%M %p") + " PDT at " + @surl, target: :_blank do %>
-                            <%= image_tag "twitter_icon.png", height: "25", width: "25"%>
+                        <%= image_tag "twitter_icon.png", height: "25", width: "25"%>
                         <% end %>
 
                         <%= link_to "http://www.facebook.com/sharer.php?u=" + @surl, target: :_blank do %>
-                            <%= image_tag "facebook_icon.png", height: "25", width: "25"%>
+                        <%= image_tag "facebook_icon.png", height: "25", width: "25"%>
                         <% end %>
                     </div>
                 </div>
