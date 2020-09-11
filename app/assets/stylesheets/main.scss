@@ -12,7 +12,6 @@ $link-hover-decoration: underline !default;
 $font-family-sans-serif: Helvetica,
 Arial;
 
-
 $border-radius-base: 0px !default;
 $border-radius-large: 0px !default;
 $border-radius-small: 0px !default;
@@ -58,7 +57,7 @@ $overlaid-text: 0 0 4px rgba(0, 0, 0, .8) !important;
   }
 }
 
-/* Design Style Guide*/
+/* Design Style Guide */
 //FONTS
 h1.white {
   color: #fff;
@@ -110,19 +109,27 @@ p.white {
   color: white;
 }
 
-//Button Styles
+//Button Styles                                        ↓
+// example <% link_to ... ... class: "btn  btn-sm  btn-primary ... %>
 .btn-primary {
-  color: $brand-gray;
-  background-color: $brand-primary;
-  border-color: #771936;
-  font: "Helvetica"
+  color: $brand-white !important;
+  background-color: $brand-primary !important;
+  border-color: #771936 !important;
+  font: "Arial";
+}
+
+.btn-secondary {
+  color: $brand-black !important;
+  background-color: $brand-secondary !important;
+  border-color: $brand-secondary !important;
+  font: "Helvetica" !important;
 }
 
 .btn-default {
-  color: $brand-secondary;
-  background-color: $brand-primary;
-  border-color: $brand-secondary;
-  font: "Helvetica"
+  color: $brand-secondary !important;
+  background-color: $brand-primary !important;
+  border-color: $brand-secondary !important;
+  font: "Helvetica" !important;
 }
 
 //FOOTER.SCSS: This is all the css used for the footer

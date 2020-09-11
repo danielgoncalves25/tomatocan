@@ -161,7 +161,7 @@
                 </div>
                 <div>
                     <p class="mb-0 mt-0"> <small> Go to <%= link_to "ThinQ.tv", root_path %> and
-                            click </small> <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-default text-warning fa fa-video-camera" %>
+                            click </small> <%= link_to " Join " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary text-warning fa fa-video-camera" %>
                     </p>
                 </div>
                 <div>
@@ -205,3 +205,6 @@
 </div>
 </div>
 </div>
+</small> <%= link_to " Primary " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-primary" %>
+</small> <%= link_to " Secondary " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-secondary" %>
+</small> <%= link_to " Default " +  @event.topic.upcase , user_viewer_path(@user.permalink, chatrm: "Activism Hall" ), class: "btn btn-sm btn-default" %>
